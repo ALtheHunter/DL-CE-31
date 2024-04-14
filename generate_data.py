@@ -149,6 +149,6 @@ if pre_white:
 from scipy import io
 # save common dataset for fair performance comparison among various algorithms 
 dataset_name = 'data_%dBeams_%dSNR_%s.mat'%(Mr,SNR,channel_model)
-io.savemat('./data/'+dataset_name,{'H_list':H_list,'Y_list':Y_list,'W':W,'W_original':W_original,'pre_whiter':pre_whiter})
+io.savemat('C:/ALI/GitHub/DL-CE-31/data/'+dataset_name,{'H_list':H_list,'Y_list':Y_list,'W':W,'W_original':W_original,'pre_whiter':pre_whiter})
 print(dataset_name)
 print('Dataset generated!')

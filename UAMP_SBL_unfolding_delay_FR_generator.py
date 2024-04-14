@@ -29,7 +29,7 @@ Mr = Q*N_RF
 
 channel_model = 'cluster'
 
-data = io.loadmat('./data/data_%dBeams_%dSNR_%s.mat'%(Mr,SNR,channel_model))
+data = io.loadmat('C:/ALI/GitHub/DL-CE-31/data/data_%dBeams_%dSNR_%s.mat'%(Mr,SNR,channel_model))
 
 H_list = data['H_list'][:data_num]
 
@@ -319,7 +319,7 @@ if training:
 
         # Training
         # define callbacks
-        best_model_path = './models/UAMP_SBL_unfolding_delay_%dLayers_%dBeams_%dSNR_res_%s_generator.h5'%(model_count*block_length+1,Mr,SNR,channel_model) # res, +1
+        best_model_path = 'C:/ALI/GitHub/DL-CE-31/models/UAMP_SBL_unfolding_delay_%dLayers_%dBeams_%dSNR_res_%s_generator.h5'%(model_count*block_length+1,Mr,SNR,channel_model) # res, +1
         checkpointer = ModelCheckpoint(best_model_path, verbose=1, save_best_only=True, save_weights_only=True)
         reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=4, verbose=1, mode='auto',
                                       min_delta=1e-5, min_lr=1e-5)
@@ -356,7 +356,7 @@ if training:
 else:
     # test a certain layer
     layer_count = 8
-    best_model_path = './models/UAMP_SBL_unfolding_delay_%dLayers_%dBeams_%dSNR_res_%s_generator.h5'%(layer_count,Mr,SNR,channel_model)
+    best_model_path = 'C:/ALI/GitHub/DL-CE-31/models/UAMP_SBL_unfolding_delay_%dLayers_%dBeams_%dSNR_res_%s_generator.h5'%(layer_count,Mr,SNR,channel_model)
     model = model_list[layer_count-1]
 
     model.load_weights(best_model_path)
@@ -367,7 +367,7 @@ else:
     import tensorflow.keras.backend as K
     get_y = K.function([model.input],[model.layers[1].output])
     y_real_imag_list_test = get_y(H_real_imag_list_test)[0]
-    io.savemat('./data/test_data_%dBeams_%dSNR_%s.mat'%(Mr,SNR,channel_model),{'y_real_imag_list_test':y_real_imag_list_test,'U':U})
+    io.savemat('C:/ALI/GitHub/DL-CE-31/data/test_data_%dBeams_%dSNR_%s.mat'%(Mr,SNR,channel_model),{'y_real_imag_list_test':y_real_imag_list_test,'U':U})
 
     error = 0
     error_nmse = 0

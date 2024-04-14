@@ -91,7 +91,7 @@ from tensorflow.keras.layers import Input,Conv2D,Conv1D,Lambda,Reshape
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping, ModelCheckpoint
 
-use_gpu = 1
+use_gpu = 0
 
 if use_gpu:
     import os
